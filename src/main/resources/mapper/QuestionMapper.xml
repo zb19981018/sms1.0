@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.briup.app02.dao.QuestionMapper">
+  <select id="findAll" resultType="com.briup.app02.bean.Question">
+    select * from poll_Question
+  </select>
+  <select id="findById" parameterType="long" resultType="com.briup.app02.bean.Question">
+    select * from poll_Question where id = #{id}
+  </select>
+  <delete id="deleteById" parameterType="long" >
+    delete from poll_Question where id = #{id}
+  </delete>
+  <insert id="save" parameterType="com.briup.app02.bean.Question">
+    insert into poll_Question values (null,#{name},#{questiontype},#{questionnaire_id})
+  </insert>
+  <update id="update" parameterType="com.briup.app02.bean.Question">
+    update poll_Question 
+    set name=#{name},questiontype=#{questiontype},questionnaire_id=#{questionnaire_id}
+     where  id=#{id}
+  </update>
+</mapper>
